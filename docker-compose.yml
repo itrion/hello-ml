@@ -1,9 +1,11 @@
+version: '3.8'
+
 services:
-  ml-workspace:
-    build: .
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - .:/app
-    ports:
-      - "8888:8888"  # For Jupyter Notebook
-    environment:
-      - JUPYTER_ENABLE_LAB=yes 
+      - ..:/workspace:cached
+    command: sleep infinity
+    working_dir: /workspace
